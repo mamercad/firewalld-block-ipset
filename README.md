@@ -20,6 +20,8 @@ Got a lot of bots and random connections coming to your server? Want to block an
 
 Use this script to block known ipv4 and ipv6 ranges associated with the countries you don't want to access your systems. Before running the script, get a list together of country codes via https://www.ipdeny.com/ipblocks/ and place them in a file called 'index.txt' in the same working directory as the script itself. Then, run however you see fit. Could be used to update ipset lists automagically via cron! Have fun, and block responsibly.
 
+This pairs nicely with fail2ban -- I personally run both this script in a cron job and have fail2ban monitoring my ssh connections for repeat offenders. This greatly reduced the threat-pool by outright blocking some common offenders.
+
 ## Credits
 * Thanks to `forum:IfThenElse` on the Linode forums -- source: https://www.linode.com/community/questions/11143/top-tip-firewalld-and-ipset-country-blacklist
 * Thanks to the folks at https://www.ipdeny.com/ for providing lists of ip ranges by country-code for free public usage. 
