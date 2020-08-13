@@ -14,6 +14,7 @@
 ```
 /bin/bash firewalld-block-ipset.sh
 ```
+Note that the first time you run this, you may get some errors with firewalld. This is fine, as it'll try to remove nonexistant ipset lists/sources. After the initial run, you should start seeing 'success' in stdout and a final message showing how many targets were blocked. 
 
 ## Description:
 Got a lot of bots and random connections coming to your server? Want to block an entire country to mitigate the problem? You've come to the right place! 
