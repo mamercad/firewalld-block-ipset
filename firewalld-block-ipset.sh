@@ -20,12 +20,11 @@ firewall-cmd --permanent --new-ipset=blocklist_v4 --type=hash:net --option=famil
 firewall-cmd --permanent --new-ipset=blocklist_v6 --type=hash:net --option=family=inet6 --option=hashsize=4096 --option=maxelem=200000
 firewall-cmd --reload
 
-## Get our intelligence (sources from ipdeny.com) and block them!
-## Note that the following lines will create a 'zones' directory within the $SCRIPT_DIR and populate it with textfiles from ipdeny.com
+## Get our intelligence (sources from ipdeny.com) and block them!                                                                                                                                                                            ## Note that the following lines will create a 'zones' directory within the $SCRIPT_DIR and populate it with textfiles from ipdeny.com
 rm -rfv $SCRIPT_DIR/zones
 mkdir -pv $SCRIPT_DIR/zones
 cd $SCRIPT_DIR/zones/
-for n in $(cat ../intel.txt)
+for n in $(cat ../index.txt)
 do
         wget https://www.ipdeny.com/ipv6/ipaddresses/aggregated/$n-aggregated.zone
         wget https://www.ipdeny.com/ipblocks/data/countries/$n.zone
@@ -38,7 +37,7 @@ done
 firewall-cmd --permanent --zone=drop --add-source=ipset:blocklist_v4
 firewall-cmd --permanent --zone=drop --add-source=ipset:blocklist_v6
 
-## Reload one last time, and we should have blocked all country-code targets in intel.txt
+## Reload one last time, and we should have blocked all country-code targets in index.txt
 firewall-cmd --reload
 
 echo "---"
