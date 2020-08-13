@@ -1,3 +1,25 @@
 # firewalld-block-ipset
 
-TODO
+**IMPORTANT NOTICE:** *Use at your own risk. Do not use in production environments until you have tested the behavior of this code! I take no responsibilty for misuse, damages, or general nonsense resulting from using this code. Feel free to comment on any suggested improvements.*
+
+## Requirements
+* linux
+* bash
+* firewalld
+* ipset
+* a file 'intel.txt' containing a list of country codes from ipdeny.com, one per line.
+* ???
+
+## Usage:
+```
+/bin/bash firewalld-block-ipset.sh
+```
+
+## Description:
+Got a lot of bots and random connections coming to your server? Want to block an entire country to mitigate the problem? You've come to the right place! 
+
+Use this script to block known ipv4 and ipv6 ranges associated with the countries you don't want to access your systems. Before running the script, get a list together of country codes via https://www.ipdeny.com/ipblocks/ and place them in a file called 'intel.txt' in the same working directory as the script itself. Then, run however you see fit. Could be used to update ipset lists automagically via cron! Have fun, and block responsibly.
+
+## Credits
+* Thanks to `forum:IfThenElse` on the Linode forums -- source: https://www.linode.com/community/questions/11143/top-tip-firewalld-and-ipset-country-blacklist
+* Thanks to the folks at https://www.ipdeny.com/ for providing lists of ip ranges by country-code for free public usage. 
